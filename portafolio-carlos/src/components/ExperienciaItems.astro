@@ -1,0 +1,36 @@
+---
+export interface Props{
+    title: string
+    description: string
+    link?: string
+    date: string
+    latest?: boolean
+}
+const {title, description, date, latest} = Astro.props
+---
+
+<span class="absolute flex items-center justify-center w-8 h-8 bg-white rounded-full -start-4 ring-9 ring-slate-800">
+    <!--<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-briefcase"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 9a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2l0 -9" /><path d="M8 7v-2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v2" /><path d="M12 12l0 .01" /><path d="M3 13a20 20 0 0 0 18 0" /></svg>-->
+    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-device-desktop-code"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12.5 16h-8.5a1 1 0 0 1 -1 -1v-10a1 1 0 0 1 1 -1h16a1 1 0 0 1 1 1v8" /><path d="M7 20h4" /><path d="M9 16v4" /><path d="M20 21l2 -2l-2 -2" /><path d="M17 17l-2 2l2 2" /></svg>
+
+</span>
+
+
+<time class="block mb-2 text-1xl font-normal leading-none text-sky-200/80">
+    {date}
+</time>
+
+<h3 class="flex flex-col sm:flex-row sm:items-center mb-2 text-lg lg:text-xl font-semibold text-[#4BB9C0] mt-3">
+    {title}
+    {latest && (
+        <span class="w-fit mt-2 sm:mt-0 sm:ms-3 bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5  rounded dark:bg-blue-900 dark:text-blue-300">
+            Actualidad
+        </span>
+    )}
+</h3>
+
+<p class="mb-4 text-sm md:text-base font-normal text-gray-300 text-pretty text-left lg:text-justify">
+    {description}
+</p>
+
+

@@ -1,0 +1,33 @@
+---
+import ExperienciaItems from "./ExperienciaItems.astro"
+
+const EXPERIENCIE =[
+    {
+        date: '02 de febrero - 04 de junio',
+        title: 'Desarrollador de Aplicaciones Web en Briosso´s Marketing - Prácticas',
+        description: 'Maquetación de modelos web en WordPress combinando el editor Divi, sus módulos nativos y código propio (HTML, CSS, JavaScript). Me encargué de la arquitectura de la información, la carga de contenidos y la optimización responsive para móviles y tablets, además de mejorar los sitios de clientes reales mediante la investigación y selección estratégica de plugins.',
+    }
+    /*
+    {Creación de modelos de páginas web comerciales potenciados con HTML, CSS y JavaScript, gestionando la arquitectura de la información y la carga de contenidos (imágenes y textos). Además, optimicé el rendimiento y la funcionalidad de sitios de clientes reales mediante la investigación y selección estratégica de plugins.
+        date: 'January 09th, 2025',
+        title: 'Flowbite Figma v1.3.0',
+        description: 'All of the pages and components are first designed in Figma and we keep a parity between the two versions even as we update the project.',
+    },
+
+    {
+        date: 'October 14th, 2024',
+        title: 'Flowbite Library v1.2.2',
+        description: 'Get started with dozens of web components and interactive elements built on top of Tailwind CSS.',
+    }*/
+
+]
+---
+<ol class="relative border-s border-white/20 ml-4 lg:ml-5"> 
+    {
+        EXPERIENCIE.map(experiencie => (
+            <li class="mb-10 ms-8 lg:ms-8">
+                <ExperienciaItems {...experiencie}/>
+            </li>
+        ))
+    }
+</ol>

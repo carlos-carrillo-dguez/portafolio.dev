@@ -1,0 +1,101 @@
+---
+import Image from "astro/components/Image.astro"
+import GitHub from "./icons/GitHub.astro"
+import Web from "./icons/Web.astro"
+import {TAGS} from "./Tags.js"
+
+const PROJECTS = [
+    {
+        title: '1. Proyecto Final Grado Superior',
+        description: 'Sistema de Gestión de Ventas de Entradas',
+        link: null,
+        github: null,
+        image: '../projects/index-proyecto.webp',
+        tags: [TAGS.PHP, TAGS.HTML, TAGS.CSS, TAGS.JavaScript, TAGS.MySQL]
+    },
+    {
+        title: '2. Web Cabrera Puerto',
+        description: 'Proyecto web Cabrera Puerto Abogados',
+        link: null,
+        github: null,
+        image: '../projects/index-abogacia.webp',
+        tags: [TAGS.HTML, TAGS.CSS, TAGS.JavaScript]
+    }
+]
+---
+{
+    PROJECTS.map(({image, title, description, tags, link, github }) => (
+        <article class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 mb-6 items-center md:text-left justify-items-center text-center">
+            {/* Columa Izquierda "Texto" */}
+            <div class="flex flex-col items-center md:items-start text-center md:text-left w-full">
+                <h3 class="text-2xl font-bold text-[#4BB9C0] mb-4">{title}</h3>
+                <p class="text-slate-300 mb-4 text-pretty">{description}</p>
+                <ul class="flex flex-wrap justify-center md:justify-start gap-2 mb-4 text-xs text-slate-400 font-mono">
+                    {tags.map((tag) => (
+                        /*<li class="rounded-full px-2.5 py-1 bg-white/10">{tag}</li>*/
+                        <li class={`rounded-full px-2 py-1 flex items-center gap-x-2 ${tag.class} whitespace-nowrap`}>
+                            {/* Comprobamos si aparece el nombre en TAGS y le damos un tamaño pequeño */}
+                            {tag.icon && (
+                                <span class="size-4 [&>svg]:w-full [&>svg]:h-full" set:html={tag.icon} />
+                            )}
+                            {/* El nombre del lenguaje */}
+                            {tag.name}
+                        </li>
+                    ))}
+                </ul>
+                <div class="flex gap-x-2.5 justify-center md:justify-start">
+                    {link && link !== 'undefined' && link !== '#' && (
+                        <a href={link} target="_blank" class="flex items-center gap-2 px-4 py-2 text-sm font-mono text-white bg-gray-800 border border-gray-600 rounded-lg hover:bg-gray-700 transition">Web<Web class="size-4"/></a>
+                    )}
+                    {github && github !== 'undefined' && link !== "#" && (
+                        <a href={github} target="_blank" class="flex items-center gap-2 px-4 py-2 text-sm font-mono text-white bg-gray-800 border border-gray-600 rounded-lg hover:bg-gray-700 transition">GitHub<GitHub class="size-4"/></a>
+                    )}
+                </div>
+            </div>
+            {/* Columa Derecha "Foto" */}
+            <img class="rounded shadow-white/10 w-full md:w-[450px] object-cover" src={image} alt={`Captura de pantalla del proyecto ${title}`} />
+            
+        </article>
+    ))
+}
+<!-- 
+<article class="movimientoRaton grid grid-cols-1 lg:grid-cols-2 gap-x-8 mb-6 items-center md:text-left justify-items-center text-center">
+<script>
+  // Buscamos todas las tarjetas de proyectos con esa clase
+  const tarjetas = document.querySelectorAll('.movimientoRaton');
+
+  tarjetas.forEach((tarjeta) => {
+    const htmlTarjeta = tarjeta as HTMLElement;
+
+    htmlTarjeta.addEventListener('mousemove', (e) => {
+      // Calculamos la posición del ratón respecto a la tarjeta
+      const rect = htmlTarjeta.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      // Encontramos el centro de la tarjeta
+      const centroX = rect.width / 2;
+      const centroY = rect.height / 2;
+
+      // Calculamos la inclinación (máximo 10 grados para que sea sutil)
+      const rotacionX = ((y - centroY) / centroY) * -10;
+      const rotacionY = ((x - centroX) / centroX) * 10;
+
+      // Aplicamos el efecto de rotación 3D en vivo
+      htmlTarjeta.style.transform = `perspective(1000px) rotateX(${rotacionX}deg) rotateY(${rotacionY}deg) scale(1.02)`;
+    });
+
+    // Cuando el ratón sale, devolvemos la tarjeta a su estado original suavemente
+    htmlTarjeta.addEventListener('mouseleave', () => {
+      htmlTarjeta.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
+    });
+  });
+</script>
+
+<style>
+  /* Le añadimos una transición suave para que cuando el ratón salga no vuelva de golpe */
+  .movimientoRaton {
+    transition: transform 0.2s ease-out;
+    transform-style: preserve-3d;
+  }
+</style>

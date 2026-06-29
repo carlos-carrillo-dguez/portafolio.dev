@@ -1,0 +1,74 @@
+<!-- <header class="fixed top-0 z-50 flex items-center justify-between md:justify-end w-full max-w-[1200px] left-1/2 -translate-x-1/2 mt-4 md:mt-10 px-4">
+    <div class="max-w-4xl mx-auto flex items-center justify-between px-6 py-4">
+        <div></div>
+    <nav class="hidden md:flex gap-x-6 font-mono text-white/90">
+        <a href="#top" class="hover:text-yellow-200/90 transition-colors">Inicio</a>
+        <a href="#experiencia" class="hover:text-yellow-200/90 transition-colors">Experiencia</a>
+        <a href="#projects" class="hover:text-yellow-200/90 transition-colors">Proyectos</a>
+        <a href="#sobre-mi" class="hover:text-yellow-200/90 transition-colors">Sobre Mí</a>
+        <a href="#stack" class="hover:text-yellow-200/90 transition-colors">Stack y Formación</a>
+    </nav>
+    </div>
+
+    <div class="md:hidden flex w-full justify-end">
+        <button id="menu-boton" class="text-white/90 p-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 6l16 0" /><path d="M4 12l16 0" /><path d="M4 18l16 0" />
+            </svg>
+        </button>
+
+        <nav id="menu-movil" class="hidden absolute top-6 left-0 w-full flex flex-col bg-slate-900/95 p-6 gap-y-6 items-center font-mono text-white/90 shadow-xl z-50">
+            <a href="#top" class="hover:text-yellow-200 transition-colors">Inicio</a>
+            <a href="#experiencia" class="hover:text-yellow-200 transition-colors">Experiencia</a>
+            <a href="#projects" class="hover:text-yellow-200 transition-colors">Proyectos</a>
+            <a href="#sobre-mi" class="hover:text-yellow-200 transition-colors">Sobre Mí</a>
+            <a href="#stack" class="hover:text-yellow-200/90 transition-colors">Stack y Formación</a>
+        </nav>
+    </div>
+</header>
+-->
+<header class="fixed top-0 left-0 right-0 z-50 w-full bg-slate-900/70 backdrop-blur-md border-b border-white/10">
+    <div class="w-full flex  justify-end px-6 py-4">
+        
+        <nav class="hidden md:flex gap-x-6 font-mono text-white/90 justify-end w-full">
+            <a href="#top" class="hover:text-[#4BB9C0] transition-colors">Inicio</a>
+            <a href="#sobre-mi" class="hover:text-[#4BB9C0] transition-colors">Sobre Mí</a>
+            <a href="#projects" class="hover:text-[#4BB9C0] transition-colors">Proyectos</a>
+            <a href="#stack" class="hover:text-[#4BB9C0] transition-colors">Stack y Formación</a>
+            <a href="#experiencia" class="hover:text-[#4BB9C0] transition-colors">Experiencia</a>
+            <a href="#contact" class="hover:text-[#4BB9C0] transition-colors">¿Hablamos?</a>
+        </nav>
+
+        <button id="menu-boton" class="md:hidden absolute right-6 text-white/90 p-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 6l16 0" /><path d="M4 12l16 0" /><path d="M4 18l16 0" />
+            </svg>
+        </button>
+    </div>
+
+    <nav id="menu-movil" class="hidden md:hidden absolute top-full left-0 w-full flex flex-col bg-slate-900/95 p-6 gap-y-6 items-center font-mono text-white/90 shadow-xl z-50 border-b border-white/10">
+        <a href="#top" class="hover:text-yellow-200 transition-colors">Inicio</a>
+        <a href="#sobre-mi" class="hover:text-[#4BB9C0] transition-colors">Sobre Mí</a>
+        <a href="#projects" class="hover:text-[#4BB9C0] transition-colors">Proyectos</a>
+        <a href="#stack" class="hover:text-[#4BB9C0] transition-colors">Stack y Formación</a>
+        <a href="#experiencia" class="hover:text-[#4BB9C0] transition-colors">Experiencia</a>
+        <a href="#contact" class="hover:text-[#4BB9C0] transition-colors">¿Hablamos?</a>
+    </nav>
+</header>
+<script>
+    const button = document.getElementById('menu-boton');
+    const menuMovil = document.getElementById('menu-movil');
+
+    if (button && menuMovil) {
+        button.addEventListener('click', () => {
+            menuMovil.classList.toggle('hidden');
+        });
+
+        // Cerrar al hacer clic en enlaces
+        menuMovil.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuMovil.classList.add('hidden');
+            });
+        });
+    }
+</script>

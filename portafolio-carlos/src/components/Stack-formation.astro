@@ -1,0 +1,107 @@
+---
+import Formation from "./icons/Formation.astro"
+import Stack from "./icons/Stack.astro"
+import { TAGS } from "./Tags"
+import Mas from "./icons/Mas.astro"
+import Contra from "./icons/Contra.astro"
+
+const STACK = [
+    TAGS.HTML,
+    TAGS.CSS,
+    TAGS.JavaScript,
+    TAGS.MySQL,
+    TAGS.PHP,
+    TAGS.JAVA,
+    TAGS.CESAR,
+    TAGS.ASTRO,
+    TAGS.WordPress
+]
+---
+<div class="grid grid-cols-1 md:grid-cols-2 gap-11">
+    <div class="flex flex-col gap-y-4">
+        <h3 class="flex items-center gap-x-2 text-xl font-semibold text-white">
+            Formación
+            <Formation />
+        </h3>
+        <ul class="space-y-4 mb-6">
+            <li class="group">
+                <span class="text-sm text-sky-200/80">
+                    2024-2026
+                </span>
+                <button class="flex items-start justify-between w-full text-left gap-x-3 mt-1 text-mist-50 hover:text-[#4BB9C0] transition-colors duration-300"
+            onclick="toggleDescription('desc-daw', 'icon-mas-daw', 'icon-contra-daw')">
+                    <h4 class="text-xl font-bold transition-colors duration-300 hover:text-[#4BB9C0] cursor-pointer">
+                        Técnico Superior en Desarrollo de Aplicaciones Web (DAW) 
+                    </h4>
+                    <div class="mt-1 shrink-0">
+                        <span id="icon-mas-daw" class="block">
+                            <Mas class="size-6"/>
+                        </span>
+                        <span id="icon-contra-daw" class="hidden">
+                            <Contra class="size-6"/>
+                        </span>
+                    </div>
+                </button>
+                <p id="desc-daw" class="hidden text-sm text-gray-300 mt-2 pl-2 border-l-2 border-[#4BB9C0] transition-all duration-300">
+                    Especialización en desarrollo frontend y backend, arquitectura del software y despliegue de aplicaciones web.
+                </p>
+            </li>
+
+            <li class="group">
+                <span class="text-sm text-sky-200/80">
+                    2010-2012
+                </span>
+                <button class="flex items-start justify-between w-full text-left gap-x-3 mt-1 text-mist-50 hover:text-[#4BB9C0] transition-colors duration-300"
+            onclick="toggleDescription('desc-smr', 'icon-mas-smr', 'icon-contra-smr')">
+                    <h4 class="text-xl font-bold transition-colors duration-300 hover:text-[#4BB9C0] cursor-pointer">                    
+                        Técnico en Sistemas Microinformático y Redes (SMR)
+                    </h4>
+                    <div class="mt-1 shrink-0">
+                        <span id="icon-mas-smr" class="block">
+                            <Mas class="size-6"/>
+                        </span>
+                        <span id="icon-contra-smr" class="hidden">
+                            <Contra class="size-6"/>
+                        </span>
+                    </div>
+                </button>
+                <p id="desc-smr" class="hidden text-sm text-gray-300 mt-2 pl-2 border-l-2 border-[#4BB9C0] transition-all duration-300">
+                    Formación en configuración de redes, soporte técnico, montaje de sistemas y administración de servidores.
+                </p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="flex flex-col gap-y-4 md:grid-cols-2">
+        <h3 class="flex items-center gap-x-2 text-xl font-semibold text-white">
+            Stack Tecnológico        
+            <Stack />    
+        </h3>
+        <div class="flex flex-wrap gap-2 mb-6">
+            {STACK.map(tag => (
+                /*<span class={`flex items-center gap-x-2 px-3 py-1 rounded-full text-xs font-medium border border-white/10 ${tag.class}`}>*/
+                <span class={`flex items-center gap-x-2 px-3 py-1 rounded-full text-xs font-medium border border-white/10 transition hover:scale-105 hover:border-white/20 ${tag.class}`}>
+                    <span class="size-4 [&>svg]:w-full [&>svg]:h-full" set:html={tag.icon} />
+                    {tag.name}
+                </span>
+            ))}
+        </div>
+
+    </div>
+
+</div>
+
+<script is:inline>
+    function toggleDescription(descId, masId, contraId) {
+        const description = document.getElementById(descId);
+        description.classList.toggle('hidden');
+
+        const iconMas = document.getElementById(masId);
+        const iconContra = document.getElementById(contraId);
+
+        if (iconMas && iconContra) {
+            iconMas.classList.toggle('hidden');
+            iconContra.classList.toggle('hidden');
+        }
+    }
+</script>

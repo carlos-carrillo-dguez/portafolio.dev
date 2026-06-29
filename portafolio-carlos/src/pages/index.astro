@@ -1,0 +1,136 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import '../styles/global.css';
+import Badge from '../components/Badge.astro';
+import LinkedinInIcon from '../components/icons/Linkedin.astro';
+import InfoJobsInIcon from '../components/icons/InfoJobs.astro';
+import GitHubInIcon from '../components/icons/GitHub.astro';
+import MailInIcon from '../components/icons/Mail.astro';
+import IconstLogs from '../components/icons/Icons-logs.astro'
+import ExperienciaItems from '../components/ExperienciaItems.astro';
+import Experiencia from '../components/Experiencia.astro';
+import Curriculum from '../components/icons/Cv.astro';
+import ProjectsIcons from '../components/icons/Projects-icons.astro';
+import Projects from '../components/Projects.astro';
+import Footer from '../components/Footer.astro';
+import Person from '../components/icons/Person.astro';
+import PersonalWrite from '../components/Personal-write.astro';
+import FormationStack from '../components/icons/Formation-stack.astro';
+import StackFormation from '../components/Stack-formation.astro';
+import Message from '../components/icons/Message.astro';
+import Contact from '../components/Contact.astro';
+
+---
+
+<Layout title="Portafolio de Carlos - Desarrollador y Programador Web"
+description="Creo aplicaciones web a medida, cuidando cada detalle como si fuera el primero.">
+    <Header /> 
+    <main class="movimientoRaton px-4 md:px-0">
+      <section class="w-full lg:w-[800px] mx-auto py-20">
+        <div class="flex justify-center mb-11">
+          <img src="/logo.webp" alt="Carlos" class="w-50 h-50 rounded-full object-cover">
+        </div>
+        <h1 class="text-white text-4xl md:text-5xl font-bold flex justify-center flex-col md:flex-row gap-x-4 pb-3 font-sans text-center">Hola, soy Carlos<div class="flex justify-center items-center"><a
+          href="https://www.linkedin.com/in/carlos-carrillo-62a13a146"
+          target="_blank"
+          rel="noopener"
+          class="flex justify-center items-center hover:scale-100 transition font-mono"><Badge>Disponible para trabajar</Badge></a></div>
+        </h1>
+        <h2 class="text-xl md:text-2xl opacity-80 mt-6 max-w-[900px] mx-auto text-center text-white leading-relaxed text-pretty font-normal pb-5">Ayudo a transformar ideas en webs de las que uno se siente orgulloso. <span class="text-yellow-200/80 font-mono">Soy Desarrollador Web </span><span class="text-sky-200/80 font-mono">en Jerez de la Frontera</span> y me obsesiona adaptar el código a los diferentes dispositivos.</h2>
+        <nav class="flex flex-wrap justify-center items-center gap-5 mt-6 text-white opacity-60">
+          <IconstLogs href="https://www.linkedin.com/in/carlos-carrillo-62a13a146/">
+            <LinkedinInIcon class="size-5 md:size-6"/>Linkedin 
+          </IconstLogs>
+
+          <IconstLogs href="https://www.infojobs.net/candidate/cv/view/index.xhtml">
+            <InfoJobsInIcon class="size-5 md:size-6"/>InfoJobs 
+          </IconstLogs>
+
+          <IconstLogs href="https://github.com/carlos-carrillo-dguez">
+            <GitHubInIcon class="size-5 md:size-6"/>GitHub 
+          </IconstLogs>
+          
+          <IconstLogs href="mailto:carlos.carrillo.dguez@gmail.com">
+            <MailInIcon class="size-5 md:size-6"/>Contáctame
+          </IconstLogs>
+        </nav>
+      </section>
+
+      <section id="sobre-mi" class="scroll-mt-10 w-full lg:w-[800px] mx-auto py-4 md:py-6">
+        <h2 class="text-2xl md:text-3xl font-semibold mb-10 flex gap-x-3 text-white justify-center items-center">
+          <Person class="size-8"/>
+          Sobre Mí
+        </h2>
+        <div class="flex flex-col lg:flex-row gap-12">
+          <div class="order-1">
+            <PersonalWrite />
+          </div>
+
+          <img 
+            src="/FOTO.webp" alt="Carlos Carrillo" class="order-2 self-center w-full max-w-[256px] md:max-w-64 md:h-64 lg:max-w-60 lg:h-60 rounded-2xl object-cover shadow-2xl"
+          />
+
+        </div>
+      </section>
+
+      <section id="projects" class="scroll-mt-10 w-full lg:w-[800px] mx-auto py-4 md:py-6">
+        <h2 class="text-2xl md:text-3xl font-semibold mb-1.5 flex gap-x-3 text-white justify-center items-center">
+        <ProjectsIcons class="size-8"/>
+        Proyectos
+        </h2>
+        <Projects />
+      </section>
+      
+      <section id="stack" class="scroll-mt-10 w-full lg:w-[800px] mx-auto py-4 md:py-6">
+        <h2 class="text-2xl md:text-3xl font-semibold mb-10 flex gap-x-3 text-white justify-center items-center">
+          <FormationStack class="size-8"/>
+          Stack y Formación 
+        </h2>
+        <StackFormation />
+      </section>
+
+      <section id="experiencia" class="scroll-mt-10 w-full lg:w-[800px] mx-auto py-4 md:py-6">
+        <h2 class="text-2xl md:text-3xl font-semibold mb-10 flex gap-x-3 text-white justify-center items-center">
+        <Curriculum class="size-8"/>
+        Experiencia Laboral
+        </h2>
+        <Experiencia />
+      </section>
+
+      <section id="contact" class="scroll-mt-10 w-full lg:w-[800px] mx-auto py-4 md:py-6">
+        <h2 class="text-2xl md:text-3xl font-semibold mb-10 flex gap-x-3 text-white justify-center items-center">
+        <Message class="size-8"/>
+        ¿Hablamos?
+        </h2>
+        <Contact />
+      </section>
+   
+    </main>
+    <Footer />
+</Layout>
+<script is:inline>
+  // Nos aseguramos de que el HTML esté completamente cargado antes de buscar las tarjetas
+  document.addEventListener('DOMContentLoaded', () => {
+    const tarjetas = document.querySelectorAll('.movimientoRaton');
+
+    tarjetas.forEach((tarjeta) => {
+      tarjeta.addEventListener('mousemove', (e) => {
+        const rect = tarjeta.getBoundingClientRect();
+        
+        // 1. Posición del brillo (X e Y)
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        tarjeta.style.setProperty('--mouse-x', `${x}px`);
+        tarjeta.style.setProperty('--mouse-y', `${y}px`);
+
+      });
+
+      // Al salir el ratón, restauramos la tarjeta a su estado plano original
+      tarjeta.addEventListener('mouseleave', () => {
+        tarjeta.style.setProperty('--rotate-x', '0deg');
+        tarjeta.style.setProperty('--rotate-y', '0deg');
+      });
+    });
+  });
+</script>
