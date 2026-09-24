@@ -3,6 +3,7 @@ import Image from "astro/components/Image.astro"
 import GitHub from "./icons/GitHub.astro"
 import Web from "./icons/Web.astro"
 import {TAGS} from "./Tags.js"
+import ImgConstruccion from "./icons/Construccion.astro"
 
 const PROJECTS = [
     {
@@ -19,12 +20,13 @@ const PROJECTS = [
         link: null,
         github: null,
         image: '../projects/index-abogacia.webp',
-        tags: [TAGS.HTML, TAGS.CSS, TAGS.JavaScript]
+        tags: [TAGS.HTML, TAGS.CSS, TAGS.JavaScript],
+        status: 'En construcción'
     }
 ]
 ---
 {
-    PROJECTS.map(({image, title, description, tags, link, github }) => (
+    PROJECTS.map(({image, title, description, tags, link, github, status }) => (
         <article class="grid grid-cols-1 lg:grid-cols-2 gap-x-8 mb-6 items-center md:text-left justify-items-center text-center">
             {/* Columa Izquierda "Texto" */}
             <div class="flex flex-col items-center md:items-start text-center md:text-left w-full">
@@ -43,6 +45,7 @@ const PROJECTS = [
                         </li>
                     ))}
                 </ul>
+            
                 <div class="flex gap-x-2.5 justify-center md:justify-start">
                     {link && link !== 'undefined' && link !== '#' && (
                         <a href={link} target="_blank" class="flex items-center gap-2 px-4 py-2 text-sm font-mono text-white bg-gray-800 border border-gray-600 rounded-lg hover:bg-gray-700 transition">Web<Web class="size-4"/></a>
@@ -53,49 +56,15 @@ const PROJECTS = [
                 </div>
             </div>
             {/* Columa Derecha "Foto" */}
-            <img class="rounded shadow-white/10 w-full md:w-[450px] object-cover" src={image} alt={`Captura de pantalla del proyecto ${title}`} />
-            
+            <div class="relative w-fit mx-auto">
+                <img class="rounded shadow-white/10 w-full md:w-[450px] object-cover" src={image} alt={`Captura de pantalla del proyecto ${title}`} />
+                {status && (
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 flex items-center gap-x-2 text-[#4BB9C0] font-mono text-xs bg-slate-900/90 backdrop-blur-md px-4 py-2 rounded-lg border border-[#4BB9C0]/30 shadow-2xl whitespace-nowrap">
+                        <ImgConstruccion class="size-5" />
+                        <span>{status}</span>
+                    </div>
+                )}
+            </div>
         </article>
     ))
 }
-<!-- 
-<article class="movimientoRaton grid grid-cols-1 lg:grid-cols-2 gap-x-8 mb-6 items-center md:text-left justify-items-center text-center">
-<script>
-  // Buscamos todas las tarjetas de proyectos con esa clase
-  const tarjetas = document.querySelectorAll('.movimientoRaton');
-
-  tarjetas.forEach((tarjeta) => {
-    const htmlTarjeta = tarjeta as HTMLElement;
-
-    htmlTarjeta.addEventListener('mousemove', (e) => {
-      // Calculamos la posición del ratón respecto a la tarjeta
-      const rect = htmlTarjeta.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-
-      // Encontramos el centro de la tarjeta
-      const centroX = rect.width / 2;
-      const centroY = rect.height / 2;
-
-      // Calculamos la inclinación (máximo 10 grados para que sea sutil)
-      const rotacionX = ((y - centroY) / centroY) * -10;
-      const rotacionY = ((x - centroX) / centroX) * 10;
-
-      // Aplicamos el efecto de rotación 3D en vivo
-      htmlTarjeta.style.transform = `perspective(1000px) rotateX(${rotacionX}deg) rotateY(${rotacionY}deg) scale(1.02)`;
-    });
-
-    // Cuando el ratón sale, devolvemos la tarjeta a su estado original suavemente
-    htmlTarjeta.addEventListener('mouseleave', () => {
-      htmlTarjeta.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
-    });
-  });
-</script>
-
-<style>
-  /* Le añadimos una transición suave para que cuando el ratón salga no vuelva de golpe */
-  .movimientoRaton {
-    transition: transform 0.2s ease-out;
-    transform-style: preserve-3d;
-  }
-</style>
